@@ -10,7 +10,7 @@ void Zones::stageUp() {
 
 void Zones::starterTown(Player player) {
 	// send the player back to town
-	std::cout << "Hello " << player.playerName() << " I am Josephine, welcome to Riverbrook!\n";
+	std::cout << "Well, " << player.playerName() << ", I am Josephine, welcome to Riverbrook!\n";
 	do {
 		std::cout << "Would you like to [a]dventure out of town, [s]hop, [r]est at the inn, check your [c]haracter stats, [e]quip an item, or look at your [i]nventory\n";
 		std::cin >> playerResponse;

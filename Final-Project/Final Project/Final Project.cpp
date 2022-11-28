@@ -16,9 +16,9 @@
         Zones zone;
         srand(static_cast<unsigned int>(time(0)));
 #pragma endregion
-        std::cout << "Hello, what should I call you?\n";
+        std::cout << "Hello traveller, what should I call you?\n";
         player.setName();
-        std::cout << "Hello " << player.playerName() << "\n"
+        std::cout << "Nice to meet you " << player.playerName() << "\n"
             << "Welcome to [insert name]\n";
         player.gameStart(); // initializes player stats // player is alive
         do {
