@@ -4,9 +4,8 @@
 
 
 //My equip code was perfect before this
-Item::Item(std::string name, std::string desc, std::string rarity, std::string type, int price, int quantity, int str, int hp, int intel, int dex, int agi) {
+Item::Item(std::string name, std::string rarity, std::string type, int price, int quantity, int str, int hp, int intel, int dex, int agi) {
 	itemName = name;
-	itemDesc = desc;
 	itemRarity = rarity;
 	itemType = type;
 	itemPrice = price;
@@ -20,7 +19,11 @@ Item::Item(std::string name, std::string desc, std::string rarity, std::string t
 }
 
 std::string Item::displayItem() {
-	return (itemName + " " + itemRarity + " " + itemDesc + " $" + 
+	return (itemName + " " + itemRarity + " $" + 
 		std::to_string(itemPrice) + " x" + std::to_string(itemQuantity) + "\nSTR:" + std::to_string(strModifier) + " HP:" + std::to_string(hpModifier) + " INT:" +
 		std::to_string(intModifier) + " DEX:" + std::to_string(dexModifier) + " AGI:" + std::to_string(agiModifier));
+}
+
+std::string Item::getName() {
+	return itemName;
 }

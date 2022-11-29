@@ -7,7 +7,13 @@
 #include "Enemy.h"
 #include "Zones.h"
     int main() {
-        Item rustySword("Rusty Sword", " test", "common", "sword", 1, 1, 1, 1, 1, 1, 1);
+#pragma region Items
+        //name, rarity, type, price, quantity, str, hp, int, dex, agi
+        
+        
+       
+#pragma endregion
+
 #pragma region variables
         Enemy mob;
         int choosemob;
@@ -16,12 +22,14 @@
         Zones zone;
         srand(static_cast<unsigned int>(time(0)));
 #pragma endregion
+
         std::cout << "Hello traveller, what should I call you?\n";
         player.setName();
         std::cout << "Nice to meet you " << player.playerName() << "\n"
             << "Welcome to [insert name]\n";
         player.gameStart(); // initializes player stats // player is alive
         do {
+
 #pragma region startTown
             zone.starterTown(player);
 #pragma endregion
@@ -29,12 +37,14 @@
 
 #pragma region mobSpawns
             choosemob = rand() % (2) + 1; // decides what mob to spawn at random
-
-            if (choosemob == 1) {
-                mob.enemy("slime", 10, 10, 1, 1);
-            }
-            else if (choosemob == 2) {
-                mob.enemy("rat", 15, 15, 2, 1);
+            //name, hp, maxhp, level, strength
+            if (zone.getStage() <= 5) {
+                if (choosemob == 1) {
+                    mob.enemy("slime", 10, 10, 1, 1);
+                }
+                else if (choosemob == 2) {
+                    mob.enemy("rat", 15, 15, 2, 1);
+                }
             }
             mob.spawnEnemy();
 #pragma endregion
@@ -50,12 +60,12 @@
                     mob.takeDamage(player.pDamage());
                     player.takeDamage(mob.mobStrength());
                     if (mob.isAlive == false) {
-
+                        zone.stageUp();
                         mob.Die();
                         player.addGold(mob.dropGold());
                         player.addXP(mob.dropXP());
                         player.onLevel();
-                        player.addItem(rustySword);
+                        player.addItem(mob.dropItem());
 
                     }
                 }

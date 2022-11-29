@@ -42,7 +42,7 @@ public:
     void cStatSet();
     ;
     //inventory functions
-    void Equip(Item item, Player player);
+    void Equip(std::string EquipChoice);
     void unEquip(std::string item);
     void addItem(Item item);
 

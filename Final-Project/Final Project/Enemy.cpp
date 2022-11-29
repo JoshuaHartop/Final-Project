@@ -8,6 +8,11 @@
 #include <ctime>
 #include <string>
 #include <sstream>
+#include "Item.h"
+
+int Enemy::getLevel() {
+    return eLevel;
+}
 
 void Enemy::takeDamage(double dmg) {
     eHealth -= dmg;
@@ -26,6 +31,17 @@ int  Enemy::dropGold() {
     goldDrop = 5 * eLevel;
     return goldDrop;
 
+}
+
+Item Enemy::dropItem() {
+#pragma region Droppable Items
+    Item rustySword("Rusty Sword", "common", "sword", 15, 1, 1, 0, 0, 0, 0); // creates an item
+#pragma endregion
+    std::cout << "The " << enemyName << " Dropped a ";
+    //randomly select item based on level of mob
+    if (getLevel() < 5) {
+        return rustySword;
+    }
 }
 
 int  Enemy::dropXP() {

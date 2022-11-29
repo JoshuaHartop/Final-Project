@@ -2,10 +2,12 @@
 #include <string>
 class Item {
 public:
-
 	
-	Item(std::string name, std::string desc, std::string rarity, std::string type, int price, int quantity, int str,int hp, int intel, int dex, int agi);
+	Item() {}
+	Item(std::string name, std::string rarity, std::string type, int price, int quantity, int str,int hp, int intel, int dex, int agi);
 	std::string displayItem();
+	std::string getName();
+
 private:
 	// stat modifiers
 	int strModifier;
@@ -16,11 +18,11 @@ private:
 	
 	// item description
 	std::string itemName;
-	std::string itemDesc;
 	std::string itemRarity;
 	std::string itemType;
 	int itemPrice;
 	int itemQuantity;
 	//
+	
 };
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Item.h"
 class Enemy {
 
 public:
@@ -12,6 +13,8 @@ public:
     int dropXP();
     void spawnEnemy();
     double mobStrength();
+    Item dropItem();
+    int getLevel();
 
 private:
     std::string enemyName;

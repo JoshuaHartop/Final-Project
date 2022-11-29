@@ -9,6 +9,7 @@
 #include <sstream>
 #include <iomanip>
 #include <vector>
+#include "Item.h"
 
 
 void Player::rest() {

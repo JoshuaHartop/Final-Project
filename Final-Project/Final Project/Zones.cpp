@@ -3,13 +3,26 @@
 #include "Player.h"
 #include <string>
 #include <algorithm>
+#include "Enemy.h"
+#include "Item.h"
+
 
 void Zones::stageUp() {
 	stage += 1;
 }
 
+int Zones::getStage() {
+	return stage;
+}
+
+std::string Zones::locationDescribe() {
+	return location;
+}
+
 void Zones::starterTown(Player player) {
 	// send the player back to town
+	std::string EquipChoice = " ";
+	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Entering Riverbrook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	std::cout << "Well, " << player.playerName() << ", I am Josephine, welcome to Riverbrook!\n";
 	do {
 		std::cout << "Would you like to [a]dventure out of town, [s]hop, [r]est at the inn, check your [c]haracter stats, [e]quip an item, or look at your [i]nventory\n";
@@ -17,6 +30,8 @@ void Zones::starterTown(Player player) {
 		playerResponse = toupper(playerResponse);
 		switch (playerResponse) {
 		case 'A':
+			location = "You venture out of the town.\n";
+			locationDescribe();
 			//adventure
 			break;
 
@@ -55,8 +70,7 @@ void Zones::starterTown(Player player) {
 			std::cout << "Please enter the item you wish to equip.\n";
 			std::cin.ignore();
 			std::getline(std::cin, EquipChoice);
-
-			//player.Equip(EquipChoice, player);
+			player.Equip(EquipChoice);
 			break;
 
 		default:
@@ -64,4 +78,10 @@ void Zones::starterTown(Player player) {
 			break;
 		}
 	} while (playerResponse != 'A');
+}
+
+void Zones::plains() {
+	if (stage == 1) {
+		location = "Rolling hills with sharp blades of grass for all the eye can see";
+	}
 }
