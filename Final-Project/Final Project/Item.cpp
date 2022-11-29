@@ -18,12 +18,12 @@ Item::Item(std::string name, std::string rarity, std::string type, int price, in
 
 }
 
-std::string Item::displayItem() {
+std::string Item::displayItem() { // displays item
 	return (itemName + " " + itemRarity + " $" + 
 		std::to_string(itemPrice) + " x" + std::to_string(itemQuantity) + "\nSTR:" + std::to_string(strModifier) + " HP:" + std::to_string(hpModifier) + " INT:" +
 		std::to_string(intModifier) + " DEX:" + std::to_string(dexModifier) + " AGI:" + std::to_string(agiModifier));
 }
 
-std::string Item::getName() {
+std::string Item::getName() { // gets item name
 	return itemName;
 }

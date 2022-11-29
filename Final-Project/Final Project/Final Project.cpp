@@ -63,9 +63,9 @@
                         zone.stageUp();
                         mob.Die();
                         player.addGold(mob.dropGold());
-                        player.addXP(mob.dropXP());
-                        player.onLevel();
-                        player.addItem(mob.dropItem());
+                        player.addXP(mob.dropXP()); // gives the player xp from the mob
+                        player.onLevel(); // checked if the player can level
+                        player.addItem(mob.dropItem()); // adds the dropped item to the players inventory
 
                     }
                 }
