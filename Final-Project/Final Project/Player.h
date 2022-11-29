@@ -82,6 +82,7 @@ private:
     };
 
     std::vector<Item> Inventory;
+    std::vector<Item> Equipped;
 };
 
 //work on char creation

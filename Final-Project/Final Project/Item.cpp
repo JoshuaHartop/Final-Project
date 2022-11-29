@@ -27,3 +27,6 @@ std::string Item::displayItem() { // displays item
 std::string Item::getName() { // gets item name
 	return itemName;
 }
+std::string Item::getType() {
+	return itemType;
+}

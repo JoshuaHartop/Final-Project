@@ -7,7 +7,7 @@ public:
 	Item(std::string name, std::string rarity, std::string type, int price, int quantity, int str,int hp, int intel, int dex, int agi);
 	std::string displayItem();
 	std::string getName();
-
+	std::string getType();
 private:
 	// stat modifiers
 	int strModifier;

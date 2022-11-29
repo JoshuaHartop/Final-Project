@@ -105,7 +105,7 @@ void Player::onLevel() { // levels up the player
 void Player::displayInventory() {
     std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
               << "Gold: " << playerGold << "\n";
-    std::cout << std::left << "Name" << std::setw(11) << " Rarity" << std::setw(9) << " Description" << std::setw(50) << " Price" << std::setw(5) << " Quantity" << std::setw(2) << " Stats\n";
+    std::cout << "Name ||" << " Rarity ||" << " Description ||" << " Price ||" << " Quantity ||" << " Item Stats\n";
     for (int i = 0; i < Inventory.size(); i++) {
         std::cout << Inventory[i].displayItem() << "\n";
     }
