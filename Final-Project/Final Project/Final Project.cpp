@@ -7,12 +7,7 @@
 #include "Enemy.h"
 #include "Zones.h"
     int main() {
-#pragma region Items
-        //name, rarity, type, price, quantity, str, hp, int, dex, agi
-        
-        
-       
-#pragma endregion
+
 
 #pragma region variables
         Enemy mob;
@@ -27,6 +22,9 @@
         player.setName();
         std::cout << "Nice to meet you " << player.playerName() << "\n"
             << "Welcome to [insert name]\n";
+#pragma region Character Creator
+        player.pCreateChar();
+#pragma endregion
         player.gameStart(); // initializes player stats // player is alive
         do {
 
@@ -87,7 +85,7 @@ The hero must include all traits from A2 plus: hit points, combat traits, experi
 The hero must have an inventory and must start with basic adventuring gear.                         | DONE - Ryan/Josh
 The adventure must have enemies for the hero to engage in combat.                                   | DONE - Josh
 The game must have a combat system.                                                                 | DONE - Josh
-The player must earn rewards for victory in combat.                                                 | NOT DONE - Josh
+The player must earn rewards for victory in combat.                                                 | DONE - Josh
 The player must be able to visit a town or haven between challenges.                                | DONE - Ryan 
 The player must be able to recover hit points.                                                      | NOT DONE - Josh
 The player must be able to interact with merchants in the town/haven.                               | NOT DONE - Ryan

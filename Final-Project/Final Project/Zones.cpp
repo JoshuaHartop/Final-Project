@@ -70,7 +70,7 @@ void Zones::starterTown(Player player) {
 			std::cout << "Please enter the item you wish to equip.\n";
 			std::cin.ignore();
 			std::getline(std::cin, EquipChoice);
-			player.Equip(EquipChoice);
+			//player.Equip(EquipChoice);
 			break;
 
 		default:

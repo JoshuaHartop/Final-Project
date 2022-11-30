@@ -37,16 +37,19 @@ public:
 
     //player class stuff
     std::string getClass();
-    void cClassSet();
-    void cRaceSet();
-    void cStatSet();
-    ;
+
+    
     //inventory functions
     void Equip(std::string EquipChoice);
     void unEquip(std::string item);
     void addItem(Item item);
 
 
+    //character creator
+    void pCreateChar();
+    void pStatSet();
+    void pClassSet();
+    void pRaceSet();
 private:
     //private variables
     //player variables
@@ -70,17 +73,29 @@ private:
 
     };
     int statPoints;
-    int statValue[5]{ 8, 8 ,8 ,8 ,8 }; // first is constitution, second is strength, third is intelligence, fourth is Dexterity, fifth is Agility
-    double pStrength; // players strength
+    int statValue[5]{ 1, 1 ,1 ,1 ,1 }; // first is constitution, second is strength, third is intelligence, fourth is Dexterity, fifth is Agility
     double pHealth; // players current hp
     int pMaxHealth; // players max hp
+
     //class select stuff
-    std::string pClassSelect[5]{
+    std::string pClassSelect[3]{
      "Warrior",
      "Mage",
      "Archer"
     };
+    std::string pClass;
+  
+    //race selection
+    std::string pRaceSelect[5]{
+        "Human",
+        "Elf",
+        "Dwarf",
+        "Gnome",
+        "Orc",
+    };
+    std::string pRace;
 
+    //equipment/inventory
     std::vector<Item> Inventory;
     std::vector<Item> Equipped;
 };
