@@ -17,6 +17,7 @@ public:
 
     // public variables
     bool isAlive = false; // checks if the player has died
+    int shopVisits;
     ~Player() {}
     //public functions
     int getXP(); // gets the players amount of xp

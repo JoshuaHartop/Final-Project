@@ -36,7 +36,54 @@ void Zones::starterTown(Player player) {
 			break;
 
 		case 'S':
-			//shop
+			char shopChoice;
+			bool leaveShop = false;
+#pragma region Shop
+			do {
+				if (player.shopVisits = 0) {
+					std::cout << "\n\nWelcome to my shop, I am Ansgard, and I have everything you need.\n\n";
+				}
+				else if (player.shopVisits = 1) {
+					std::cout << "\n\nI never caught your name, what was it?\n\n";
+				}
+				else if (player.shopVisits >= 2){
+					std::cout << "\n\nHello again " << player.playerName() << " how is the adventuring going?\n\n";
+				}
+				else if (player.shopVisits >= 10) {
+					std::cout << "\n\nDont you think you come here to much?\n\n";
+				}
+				else if (player.shopVisits == 20) {
+					std::cout << "\n\n" << player.playerName() << " Do you think I should start make a rewards card for my store?\n\n";
+				}
+				else if (player.shopVisits >= 21) {
+					std::cout << "\n\nNice to see you again " <<player.playerName()<<".\n\n";
+				}
+				std::cout << "So what is it you came here for?\n";
+				std::cout << "[W] Weapons\n";
+				std::cout << "[P] Potions\n";
+				std::cout << "[S] Selling\n";
+				std::cout << "[E] Exit\n";
+				shopChoice = toupper(shopChoice);
+				switch (shopChoice) {
+				case 'W':
+					//weapons
+					break;
+				case 'P':
+					//Potions
+					break;
+				case'S':
+					//Selling
+					break;
+				case'E':
+					std::cout << "\n\nReally? Next time you come in here make sure you buy something, I'm running a business here.\n\n";
+					break;
+				default:
+					std::cout << "\n\n" << shopChoice << " Is not an option, cant you read?\n\n";
+					break;
+				}
+			} while (leaveShop != true);
+			
+#pragma endregion
 			break;
 
 		case 'R': //rest at inn restoring all hp

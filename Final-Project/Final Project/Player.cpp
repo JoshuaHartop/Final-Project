@@ -52,7 +52,7 @@ void Player::gameStart() {
     pRequiredXP = (100 * pLevel) * 1.5;
     pArmor = 0;
     playerGold = 0;
-
+    shopVisits = 0;
 }
 
 void Player::setName() { // sets the players name

@@ -14,11 +14,3 @@ private:
     std::string EquipChoice;
 	std::string location;
 };
-
-class Shop {
-public:
-
-private:
-	char shopChoice;
-
-};
