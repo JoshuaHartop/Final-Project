@@ -21,6 +21,7 @@ std::string Zones::locationDescribe() {
 
 void Zones::starterTown(Player player) {
 	// send the player back to town
+	bool leaveShop;
 	std::string EquipChoice = " ";
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Entering Riverbrook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	std::cout << "Well, " << player.playerName() << ", I am Josephine, welcome to Riverbrook!\n";
@@ -37,7 +38,7 @@ void Zones::starterTown(Player player) {
 
 		case 'S':
 			char shopChoice;
-			bool leaveShop = false;
+			leaveShop = false;
 #pragma region Shop
 			do {
 				if (player.shopVisits = 0) {
@@ -63,6 +64,7 @@ void Zones::starterTown(Player player) {
 				std::cout << "[P] Potions\n";
 				std::cout << "[S] Selling\n";
 				std::cout << "[E] Exit\n";
+				std::cin >> shopChoice;
 				shopChoice = toupper(shopChoice);
 				switch (shopChoice) {
 				case 'W':
@@ -76,6 +78,7 @@ void Zones::starterTown(Player player) {
 					break;
 				case'E':
 					std::cout << "\n\nReally? Next time you come in here make sure you buy something, I'm running a business here.\n\n";
+					leaveShop = true;
 					break;
 				default:
 					std::cout << "\n\n" << shopChoice << " Is not an option, cant you read?\n\n";
@@ -129,6 +132,6 @@ void Zones::starterTown(Player player) {
 
 void Zones::plains() {
 	if (stage == 1) {
-		location = "Rolling hills with sharp blades of grass for all the eye can see";
+		location = "Rolling hills with sharp blades of grass for all the eye can see\n";
 	}
 }

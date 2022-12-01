@@ -72,8 +72,19 @@ void Player::Die() {
 double Player::pDamage() {
     double randDamage = std::rand() % (115 + 1 - 85) + 85;
     randDamage = (randDamage / 100);
-    double damage = randDamage * statValue[1];
-    return damage;
+    if (getClass() == "Warrior") {
+        double damage = randDamage * statValue[1];
+        return damage;
+    }
+    else if (getClass() == "Archer") {
+        double damage = randDamage * statValue[4];
+        return damage;
+    }
+    else if (getClass() == "Mage") {
+        double damage = randDamage * statValue[2];
+        return damage;
+    }
+
 }
 
 void Player::takeDamage(double dmg) {
@@ -129,31 +140,18 @@ void Player::displayStats() // displays users stats
         << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 }
 //Player creator stuff
+std::string Player::getClass() {
+    return pClass;
+}
 
 void Player::pCreateChar() {
-    pClassSet();
     pRaceSet();
+    pClassSet();
     pStatSet();
 }
 
 void Player::pStatSet() {
         int statBonus = 2;
-        if (pClass == "Warrior") {
-            Player::statValue[1] += statBonus;
-            Player::statValue[0] += statBonus;
-        }
-        else if (pClass == "Archer") {
-            Player::statValue[4] += statBonus;
-            Player::statValue[3] += statBonus;
-        }
-        else if (pClass == "Mage") {
-            Player::statValue[3] += statBonus;
-            Player::statValue[2] += statBonus;
-        }
-        else {
-            std::cout << "\nCould not retrieve stats, invalid Class\n";
-        }
-
         if (pRace == "Human") {
             Player::statValue[0] += statBonus;
             Player::statValue[1] += statBonus;
@@ -177,6 +175,30 @@ void Player::pStatSet() {
         else {
             std::cout << "\nCould not retrieve stats, invalid Race\n";
         }
+
+        if (pClass == "Warrior") {
+            Player::statValue[1] += statBonus;
+            Player::statValue[0] += statBonus;
+            Player::statValue[4] = 0;
+            Player::statValue[2] = 0;
+        }
+        else if (pClass == "Archer") {
+            Player::statValue[4] += statBonus;
+            Player::statValue[3] += statBonus;
+            Player::statValue[2] = 0;
+            Player::statValue[1] = 0;
+        }
+        else if (pClass == "Mage") {
+            Player::statValue[3] += statBonus;
+            Player::statValue[2] += statBonus;
+            Player::statValue[1] = 0;
+            Player::statValue[4] = 0;
+        }
+        else {
+            std::cout << "\nCould not retrieve stats, invalid Class\n";
+        }
+
+
 }
 
 void Player::pClassSet() {

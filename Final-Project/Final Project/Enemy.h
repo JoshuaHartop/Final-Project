@@ -13,7 +13,7 @@ public:
     int dropXP();
     void spawnEnemy();
     double mobStrength();
-    Item dropItem();
+    Item dropItem(Enemy enemy);
     int getLevel();
 
 private:

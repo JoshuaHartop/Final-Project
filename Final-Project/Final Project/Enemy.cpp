@@ -33,15 +33,40 @@ int  Enemy::dropGold() {
 
 }
 
-Item Enemy::dropItem() {
+Item Enemy::dropItem(Enemy enemy) {
 #pragma region Droppable Items
-    Item rustySword("Rusty Sword", "common", "sword", 15, 1, 1, 0, 0, 0, 0); // creates an item
+    Item shortBow("Short Bow", "Common", "Bow", 15, 1, 0, 0, 0, 0, 1);
+    Item rustySword("Rusty Sword", "Common", "Sword", 15, 1, 1, 0, 0, 0, 0); // creates an item
+    Item warpedStaff("Warped Staff", "Common", "Staff", 15, 1, 0, 0, 1, 0, 0);
+    Item g("", "", "placeholder", 0, 0, 0, 0, 0, 0, 0);
+    
 #pragma endregion
-    std::cout << "The " << enemyName << " Dropped a ";
+    int randomDrop;
+    int itemSelect;
+    randomDrop = std::rand() % (100 + 1);
+    itemSelect = std::rand() % (3) + 1;
+    
     //randomly select item based on level of mob
-    if (getLevel() < 5) {
-        return rustySword;
+    if (enemy.getLevel() < 5) {
+        std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
+        if (/*randomDrop >= 60 &&*/ randomDrop <= 100) {
+            std::cout << "The " << enemyName << " Dropped a ";
+            if (itemSelect == 1) {
+                return rustySword;
+            }
+            else if (itemSelect == 2) {
+                return shortBow;
+            }
+            else if (itemSelect == 3) {
+                return warpedStaff;
+            }
+            
+        }
+        else {
+            return g;
+        }
     }
+
 }
 
 int  Enemy::dropXP() {

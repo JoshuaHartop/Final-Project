@@ -15,6 +15,7 @@
         char response = 'z';
         Player player;
         Zones zone;
+        Item nothing;
         srand(static_cast<unsigned int>(time(0)));
 #pragma endregion
 
@@ -58,12 +59,12 @@
                     mob.takeDamage(player.pDamage());
                     player.takeDamage(mob.mobStrength());
                     if (mob.isAlive == false) {
-                        zone.stageUp();
+                        //zone.stageUp();
                         mob.Die();
                         player.addGold(mob.dropGold());
                         player.addXP(mob.dropXP()); // gives the player xp from the mob
                         player.onLevel(); // checked if the player can level
-                        player.addItem(mob.dropItem()); // adds the dropped item to the players inventory
+                        player.addItem(mob.dropItem(mob)); // adds the dropped item to the players inventory
 
                     }
                 }
