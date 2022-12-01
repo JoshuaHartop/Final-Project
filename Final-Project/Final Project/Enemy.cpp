@@ -35,9 +35,24 @@ int  Enemy::dropGold() {
 
 Item Enemy::dropItem(Enemy enemy) {
 #pragma region Droppable Items
-    Item shortBow("Short Bow", "Common", "Bow", 15, 1, 0, 0, 0, 0, 1);
-    Item rustySword("Rusty Sword", "Common", "Sword", 15, 1, 1, 0, 0, 0, 0); // creates an item
-    Item warpedStaff("Warped Staff", "Common", "Staff", 15, 1, 0, 0, 1, 0, 0);
+    //tier 1 items
+    Item birchBow("BIRCH BOW", "Common", "Weapon", 15, 1, 0, 0, 0, 0, 1);
+    Item rustySword("RUSTY SWORD", "Common", "Weapon", 15, 1, 0, 1, 0, 0, 0); // creates an item
+    Item warpedStaff("WARPED STAFF", "Common", "Weapon", 15, 1, 0, 0, 1, 0, 0);
+    //tier 2 items
+    Item mapleBow("MAPLE BOW", "Uncommon", "Weapon", 50, 1, 0, 0, 0, 0, 10);
+	Item copperSword("COPPER SWORD", "Uncommon", "Weapon", 50, 1, 0, 10, 0, 0, 0);
+	Item fireStaff("FIRE STAFF", "Uncommon", "Weapon", 50, 1, 0, 0, 10, 0, 0);
+    //tier 3
+    Item eucalyptusBow("EUCALYPTUS BOW", "Epic", "Weapon", 150, 1, 0, 0, 0, 0, 45);
+	Item tungstenSword("TUNGSTEN SWORD", "Epic", "Weapon", 150, 1, 0, 45, 0, 0, 0);
+	Item electricStaff("ELECTRIC STAFF", "Epic", "Weapon", 150, 1, 0, 0, 45, 0, 0);
+    //Boss Gear
+    Item bloodwoodBow("BLOODWOOD BOW", "LEGENDARY", "Weapon", 1000, 1, 0, 0, 0, 0, 100);
+	Item hellflameSword("HELLFLAME SWORD", "LEGENDARY", "Weapon", 1000, 1, 0, 100, 0, 0, 0);
+	Item kingsStaff("KINGS STAFF", "LEGENDARY", "Weapon", 1000, 1, 0, 0, 100, 0, 0);
+    Item crownOfLies("CROWN OF LIES", "MYTHIC", "Armor", 3500, 1, 150, 150, 150, 150, 150);
+    //placeholder
     Item g("", "", "placeholder", 0, 0, 0, 0, 0, 0, 0);
     
 #pragma endregion
@@ -49,13 +64,13 @@ Item Enemy::dropItem(Enemy enemy) {
     //randomly select item based on level of mob
     if (enemy.getLevel() < 5) {
         std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
-        if (/*randomDrop >= 60 &&*/ randomDrop <= 100) {
+        if (randomDrop >= 60 && randomDrop <= 85) {
             std::cout << "The " << enemyName << " Dropped a ";
             if (itemSelect == 1) {
                 return rustySword;
             }
             else if (itemSelect == 2) {
-                return shortBow;
+                return birchBow;
             }
             else if (itemSelect == 3) {
                 return warpedStaff;

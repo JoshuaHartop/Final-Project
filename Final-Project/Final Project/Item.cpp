@@ -30,3 +30,22 @@ std::string Item::getName() { // gets item name
 std::string Item::getType() {
 	return itemType;
 }
+
+int Item::getStr() {
+	return strModifier;
+}
+int Item::getDex() {
+	return dexModifier;
+}
+int Item::getIntel() {
+	return intModifier;
+}
+int Item::getAgi() {
+	return agiModifier;
+}
+int Item::getHP() {
+	return hpModifier;
+}
+int Item::getMoney() {
+	return itemPrice;
+}

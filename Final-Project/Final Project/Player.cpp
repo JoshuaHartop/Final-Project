@@ -119,6 +119,10 @@ void Player::displayInventory() {
     for (int i = 0; i < Inventory.size(); i++) {
         std::cout << Inventory[i].displayItem() << "\n";
     }
+    std::cout << "Equipped items:\n";
+    for (int i = 0; i < Equipped.size(); i++) {
+        std::cout << Equipped[i].displayItem() << "\n\n";
+    }
 
     
     std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";

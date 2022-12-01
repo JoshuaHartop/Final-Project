@@ -99,6 +99,8 @@ private:
     //equipment/inventory
     std::vector<Item> Inventory;
     std::vector<Item> Equipped;
+	bool WeaponE = false;
+	bool ArmorE = false;
 };
 
 //work on char creation

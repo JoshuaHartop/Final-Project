@@ -8,14 +8,20 @@ public:
 	std::string displayItem();
 	std::string getName();
 	std::string getType();
+	int getStr();
+	int getDex();
+	int getIntel();
+	int getAgi();
+	int getHP();
+	int getMoney();
 private:
 	// stat modifiers
-	int strModifier;
+	
 	int hpModifier;
 	int intModifier;
 	int dexModifier;
 	int agiModifier; 
-	
+	int strModifier;
 	// item description
 	std::string itemName;
 	std::string itemRarity;
