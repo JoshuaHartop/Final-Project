@@ -18,10 +18,10 @@ int Zones::getStage() {
 std::string Zones::locationDescribe() {
 	return location;
 }
-
+char shopChoice;
+bool leaveShop = false;
 void Zones::starterTown(Player player) {
 	// send the player back to town
-	bool leaveShop;
 	std::string EquipChoice = " ";
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Entering Riverbrook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	std::cout << "Well, " << player.playerName() << ", I am Josephine, welcome to Riverbrook!\n";
@@ -37,27 +37,17 @@ void Zones::starterTown(Player player) {
 			break;
 
 		case 'S':
-			char shopChoice;
-			leaveShop = false;
+			
 #pragma region Shop
 			do {
-				if (player.shopVisits = 0) {
-					std::cout << "\n\nWelcome to my shop, I am Ansgard, and I have everything you need.\n\n";
+				if (shopVisits <= 0) {
+					std::cout << "\nWelcome to my shop, I am Ansgard, and I have everything you need.\n\n";
 				}
-				else if (player.shopVisits = 1) {
-					std::cout << "\n\nI never caught your name, what was it?\n\n";
+				else if (shopVisits == 1) {
+					std::cout << "\nI never caught your name, what was it?\n\n";
 				}
-				else if (player.shopVisits >= 2){
-					std::cout << "\n\nHello again " << player.playerName() << " how is the adventuring going?\n\n";
-				}
-				else if (player.shopVisits >= 10) {
-					std::cout << "\n\nDont you think you come here to much?\n\n";
-				}
-				else if (player.shopVisits == 20) {
-					std::cout << "\n\n" << player.playerName() << " Do you think I should start make a rewards card for my store?\n\n";
-				}
-				else if (player.shopVisits >= 21) {
-					std::cout << "\n\nNice to see you again " <<player.playerName()<<".\n\n";
+				else if (shopVisits >= 2) {
+					std::cout << "\nHello again " << player.playerName() << " how is the adventuring going?\n\n";
 				}
 				std::cout << "So what is it you came here for?\n";
 				std::cout << "[W] Weapons\n";
@@ -70,15 +60,22 @@ void Zones::starterTown(Player player) {
 				case 'W':
 					//weapons
 					break;
+					leaveShop = true;
+					shopVisits += 1;
 				case 'P':
 					//Potions
 					break;
+					leaveShop = true;
+					shopVisits += 1;
 				case'S':
 					//Selling
+					leaveShop = true;
+					shopVisits += 1;
 					break;
 				case'E':
-					std::cout << "\n\nReally? Next time you come in here make sure you buy something, I'm running a business here.\n\n";
+					std::cout << "\n\nAlright then see you later.\n\n";
 					leaveShop = true;
+					shopVisits += 1;
 					break;
 				default:
 					std::cout << "\n\n" << shopChoice << " Is not an option, cant you read?\n\n";

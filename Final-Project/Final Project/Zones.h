@@ -3,6 +3,7 @@
 #include "Player.h"
 class Zones {
 public:
+	int shopVisits = 0;
 	void starterTown(Player player);
 	void stageUp();
 	void plains();
