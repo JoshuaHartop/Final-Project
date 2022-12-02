@@ -109,6 +109,7 @@ void Player::onLevel() { // levels up the player
         std::cout << "Congrats you've reached level " << pLevel << "\n"
             << "Your Health has been fully restored.\n"
             << "And you have been given 3 Attribute Points!\n";
+        statPoints += 3;
     };
 }
 
@@ -275,4 +276,43 @@ void Player::pRaceSet() {
         std::cout << "Please enter a valid option.\n";
         break;
     }
+}
+
+void Player::displayStatPointPage() {
+    for (int i = 0; i < 5; i++) {
+        std::cout << "[" << i+1 << "] " << pStats[i] << ": " << statValue[i] << "\n";
+    }
+}
+
+int Player::getStatPoints() {
+    return statPoints;
+}
+
+void Player::addStatPoint(int stat) {
+    switch (stat) {
+    case 1:
+        statValue[0] += 1;
+        statPoints -= 1;
+        break;
+    case 2:
+        statValue[1] += 1;
+        statPoints -= 1;
+        break;
+    case 3:
+        statValue[2] += 1;
+        statPoints -= 1;
+        break;
+    case 4:
+        statValue[3] += 1;
+        statPoints -= 1;
+        break;
+    case 5:
+        statValue[4] += 1;
+        statPoints -= 1;
+        break;
+    default:
+        std::cout << "Please enter a valid number.\n";
+        break;
+    }
+    
 }

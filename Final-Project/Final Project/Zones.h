@@ -11,7 +11,7 @@ public:
 	int getStage();
 private:
 	char playerResponse;
-	int stage;
+	int stage = 0;
     std::string EquipChoice;
 	std::string location;
 };

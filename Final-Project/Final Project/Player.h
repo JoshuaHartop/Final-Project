@@ -33,8 +33,11 @@ public:
     void onLevel(); // levels the character
     void displayInventory();// checks users inventory and displays gold
     void displayStats(); // displays users stats
+    void displayStatPointPage();
+    int getStatPoints();
     bool minusGold(int goldSubtracted);
     void rest();
+    void addStatPoint(int stat);
 
     //player class stuff
     std::string getClass();

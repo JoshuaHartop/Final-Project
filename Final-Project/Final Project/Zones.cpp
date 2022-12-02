@@ -25,22 +25,25 @@ void Zones::starterTown(Player player) {
 	bool leaveShop = false;
 	std::string EquipChoice = " ";
 	std::string unEquipChoice = " ";
+	int statPointChoice;
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Entering Riverbrook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	std::cout << "Well, " << player.playerName() << ", I am Josephine, welcome to Riverbrook!\n";
 	do {
-		std::cout << "Would you like to [a]dventure out of town, [s]hop, [r]est at the inn, check your [c]haracter stats, [e]quip an item, [u]nequip an item, or look at your [i]nventory\n";
+		std::cout << "Would you like to [a]dventure out of town, [s]hop, [r]est at the inn, check your [c]haracter stats, add attribute [p]oints, [e]quip an item, [u]nequip an item, or look at your [i]nventory\n";
 		std::cin >> playerResponse;
 		playerResponse = toupper(playerResponse);
 		switch (playerResponse) {
+#pragma region Adventure
 		case 'A':
 			location = "You venture out of the town.\n";
 			locationDescribe();
 			//adventure
 			break;
-
+#pragma endregion
+#pragma region Shop
 		case 'S':
 			
-#pragma region Shop
+
 			do {
 				if (shopVisits == 0) {
 					std::cout << "\nWelcome to my shop, I am Ansgard, and I have everything you need.\n\n";
@@ -85,10 +88,9 @@ void Zones::starterTown(Player player) {
 					break;
 				}
 			} while (leaveShop != true);
-			
-#pragma endregion
 			break;
-
+#pragma endregion
+#pragma region Rest
 		case 'R': //rest at inn restoring all hp
 			std::cout << "Would you like to sleep at the inn? (150 gold) y/n\n";
 			std::cin >> playerResponse;
@@ -107,15 +109,18 @@ void Zones::starterTown(Player player) {
 			else {
 				break;
 			}
-
+#pragma endregion
+#pragma region Character Stats
 		case 'C':
 			player.displayStats();
 			break;
-
+#pragma endregion
+#pragma region Inventory
 		case 'I':
 			player.displayInventory();
 			break;
-
+#pragma endregion
+#pragma region Equip
 		case 'E':
 			std::cout << "Please enter the item you wish to equip.\n";
 			std::cin.ignore();
@@ -123,6 +128,8 @@ void Zones::starterTown(Player player) {
 			std::transform(EquipChoice.begin(), EquipChoice.end(), EquipChoice.begin(), ::toupper);
 			player.Equip(EquipChoice);
 			break;
+#pragma endregion
+#pragma region Unequip
 		case 'U':
 			std::cout << "Please enter the item you wish to unequip.\n";
 			std::cin.ignore();
@@ -130,7 +137,24 @@ void Zones::starterTown(Player player) {
 			std::transform(unEquipChoice.begin(), unEquipChoice.end(), unEquipChoice.begin(), ::toupper);
 			player.unEquip(unEquipChoice);
 			break;
-
+#pragma endregion
+#pragma region Stat points
+		case 'P':
+			do {
+				std::cout << "\nDisplaying available attributes:\n";
+				player.displayStatPointPage();
+				std::cout << "You currently have " << player.getStatPoints() << " attribute points\n";
+				if (player.getStatPoints() >= 1) {
+					std::cout << "Where would you like to put in 1 attribute point? Press 0 or spend all attribute points to exit\n";
+					std::cin >> statPointChoice;
+					player.addStatPoint(statPointChoice);
+				}
+				else {
+					statPointChoice = 0;
+				}
+			} while (statPointChoice != 0);
+			break;
+#pragma endregion
 		default:
 			std::cout << "Please enter a valid response!\n";
 			break;

@@ -62,7 +62,7 @@ Item Enemy::dropItem(Enemy enemy) {
     itemSelect = std::rand() % (3) + 1;
     
     //randomly select item based on level of mob
-    if (enemy.getLevel() < 5) {
+    if (enemy.getLevel() < 100) {
         std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
         if (randomDrop >= 60 && randomDrop <= 85) {
             std::cout << "The " << enemyName << " Dropped a ";
@@ -106,6 +106,4 @@ void Enemy::enemy(std::string Name, int hp, int maxHp, int level, int strength) 
     eMaxHealth = maxHp;
     eLevel = level;
     eStrength = strength;
-
 }
-
