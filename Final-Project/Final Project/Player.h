@@ -32,6 +32,7 @@ public:
     void takeDamage(double dmg); // player takes damage
     void onLevel(); // levels the character
     void displayInventory();// checks users inventory and displays gold
+    void MdisplayInventory();
     void displayStats(); // displays users stats
     bool minusGold(int goldSubtracted);
     void rest();
@@ -44,7 +45,9 @@ public:
     void Equip(std::string EquipChoice);
     void unEquip(std::string item);
     void addItem(Item item);
-
+    void addItemM(Item item);
+    void SellItems(std::string sellChoice);
+    void buyItems(std::string buyChoice);
 
     //character creator
     void pCreateChar();
@@ -98,6 +101,7 @@ private:
 
     //equipment/inventory
     std::vector<Item> Inventory;
+    std::vector<Item> mInventory;
     std::vector<Item> Equipped;
 	bool WeaponE = false;
 	bool ArmorE = false;

@@ -25,6 +25,8 @@ void Zones::starterTown(Player player) {
 	bool leaveShop = false;
 	std::string EquipChoice = " ";
 	std::string unEquipChoice = " ";
+	std::string sellChoice = " ";
+	std::string buyChoice = " ";
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Entering Riverbrook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	std::cout << "Well, " << player.playerName() << ", I am Josephine, welcome to Riverbrook!\n";
 	do {
@@ -69,11 +71,21 @@ void Zones::starterTown(Player player) {
 				shopChoice = toupper(shopChoice);
 				switch (shopChoice) {
 				case 'A':
-				//Armor
+					player.MdisplayInventory();
+					std::cout << "Please enter the item you wish to buy.\n";
+					std::cin.ignore();
+					std::getline(std::cin, buyChoice);
+					std::transform(buyChoice.begin(), buyChoice.end(), buyChoice.begin(), ::toupper);
+					player.buyItems(buyChoice);
+					break;
 				break;
 				case'S':
 					player.displayInventory();
-					
+					std::cout << "Please enter the item you wish to sell.\n";
+					std::cin.ignore();
+					std::getline(std::cin, sellChoice);
+					std::transform(sellChoice.begin(), sellChoice.end(), sellChoice.begin(), ::toupper);
+					player.SellItems(sellChoice);
 					break;
 				case'E':
 					std::cout << "\n\nAlright then see you later.\n\n";
