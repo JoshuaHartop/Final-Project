@@ -64,7 +64,7 @@ Item Enemy::dropItem(Enemy enemy) {
     //randomly select item based on level of mob
     if (enemy.getLevel() < 100) {
         std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
-        if (randomDrop >= 60 && randomDrop <= 85) {
+        if (randomDrop >= -60 && randomDrop <= 855) {
             std::cout << "The " << enemyName << " Dropped a ";
             if (itemSelect == 1) {
                 return rustySword;

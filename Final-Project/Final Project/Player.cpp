@@ -25,12 +25,12 @@ int Player::getGold() {
 }
 
 void Player::addGold(int goldGiven) {
-    playerGold += goldGiven;
+    playerGold = playerGold + goldGiven;
 }
 
 bool Player::minusGold(int goldSubtracted) {
     if (playerGold >= goldSubtracted) {
-        playerGold -= goldSubtracted;
+        playerGold = playerGold - goldSubtracted;
         return true;
     }
     else {
@@ -53,6 +53,13 @@ void Player::gameStart() {
     pArmor = 0;
     playerGold = 0;
     shopVisits = 0;
+    //Merchant Starter Kit
+    Item woodenArmor("WOODEN ARMOR", "Uncommon", "Armor", 50, 1, 0, 0, 0, 50, 0);
+    Item steelArmor("STEEL ARMOR", "Epic", "Armor", 150, 1, 0, 0, 0, 215, 0);
+    Item godlyArmor("GODLY ARMOR", "LEGENDARY", "Armor", 1000, 1, 0, 0, 0, 475, 0);
+    addItemM(woodenArmor);
+    addItemM(steelArmor);
+    addItemM(godlyArmor);
 }
 
 void Player::setName() { // sets the players name
@@ -128,7 +135,15 @@ void Player::displayInventory() {
     
     std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 }
+void Player::MdisplayInventory() {
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    std::cout << "Name ||" << " Rarity ||" << " Description ||" << " Price ||" << " Quantity ||" << " Item Stats\n";
+    for (int i = 0; i < mInventory.size(); i++) {
+        std::cout << mInventory[i].displayItem() << "\n";
+    }
 
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+}
 void Player::displayStats() // displays users stats
 {
     std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"

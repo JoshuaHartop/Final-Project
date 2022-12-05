@@ -21,10 +21,16 @@ std::string Zones::locationDescribe() {
 
 void Zones::starterTown(Player player) {
 	// send the player back to town
+	Enemy mob;
+	int choosemob;
+	char response = 'z';
+	char playerResponse = '1';
 	char shopChoice;
 	bool leaveShop = false;
 	std::string EquipChoice = " ";
 	std::string unEquipChoice = " ";
+	std::string sellChoice = " ";
+	std::string buyChoice = " ";
 	int statPointChoice;
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Entering Riverbrook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	std::cout << "Well, " << player.playerName() << ", I am Josephine, welcome to Riverbrook!\n";
@@ -32,17 +38,63 @@ void Zones::starterTown(Player player) {
 		std::cout << "Would you like to [a]dventure out of town, [s]hop, [r]est at the inn, check your [c]haracter stats, add attribute [p]oints, [e]quip an item, [u]nequip an item, or look at your [i]nventory\n";
 		std::cin >> playerResponse;
 		playerResponse = toupper(playerResponse);
-		switch (playerResponse) {
+		//switch (playerResponse) {
 #pragma region Adventure
-		case 'A':
+		//case 'A':
+		if (playerResponse == 'A') {
 			location = "You venture out of the town.\n";
 			locationDescribe();
+			choosemob = rand() % (2) + 1; // decides what mob to spawn at random
+			//name, hp, maxhp, level, strength
+			if (getStage() < 5) {
+				if (choosemob == 1) {
+					mob.enemy("slime", 10, 10, 1, 1);
+				}
+				else if (choosemob == 2) {
+					mob.enemy("rat", 15, 15, 2, 1);
+				}
+			}
+			else if (getStage() == 5) {
+				mob.enemy("Big rat", 50, 50, 5, 5);
+			}
+			else  if (getStage() > 5) {
+				mob.enemy("slimey", 10, 10, 1, 1);
+			}
+			mob.spawnEnemy();
+#pragma endregion
+
+#pragma region fightCode
+			while (player.isAlive == true && mob.isAlive == true) {
+
+				std::cout << "Would you like to [f]ight? or [r]un\n";
+
+				std::cin >> response;
+				response = toupper(response); // negates caps/lowercase
+				if (response == 'F') {
+					mob.takeDamage(player.pDamage());
+					player.takeDamage(mob.mobStrength());
+					if (mob.isAlive == false) {
+						stageUp();
+						mob.Die();
+						player.addGold(mob.dropGold());
+						player.addXP(mob.dropXP()); // gives the player xp from the mob
+						player.onLevel(); // checked if the player can level
+						player.addItem(mob.dropItem(mob)); // adds the dropped item to the players inventory
+					}
+				}
+				if (response == 's') {
+					player.displayStats();
+				}
+			};
+
+#pragma endregion
 			//adventure
-			break;
+			////////continue;
+		}
 #pragma endregion
 #pragma region Shop
-		case 'S':
-			
+		else if (playerResponse == 'S') {
+
 
 			do {
 				if (shopVisits == 0) {
@@ -65,33 +117,43 @@ void Zones::starterTown(Player player) {
 					std::cout << "\n\nNice to see you again " << player.playerName() << ".\n\n";
 				}
 				std::cout << "So what is it you came here for?\n"
-						  << "[A] Armor\n"
-						  << "[S] Selling\n"
-						  << "[E] Exit\n";
+					<< "[A] Armor\n"
+					<< "[S] Selling\n"
+					<< "[E] Exit\n";
 				std::cin >> shopChoice;
 				shopChoice = toupper(shopChoice);
-				switch (shopChoice) {
-				case 'A':
-				//Armor
-				break;
-				case'S':
+				if (shopChoice == 'A') {
+					player.MdisplayInventory();
+					std::cout << "Please enter the item you wish to buy.\n";
+					std::cin.ignore();
+					std::getline(std::cin, buyChoice);
+					std::transform(buyChoice.begin(), buyChoice.end(), buyChoice.begin(), ::toupper);
+					player.buyItems(buyChoice);
+				}
+
+				else if (shopChoice == 'S') {
 					player.displayInventory();
-					
-					break;
-				case'E':
+					std::cout << "Please enter the item you wish to sell.\n";
+					std::cin.ignore();
+					std::getline(std::cin, sellChoice);
+					std::transform(sellChoice.begin(), sellChoice.end(), sellChoice.begin(), ::toupper);
+					player.SellItems(sellChoice);
+				}
+				else if (shopChoice == 'E') {
 					std::cout << "\n\nAlright then see you later.\n\n";
 					leaveShop = true;
 					shopVisits += 1;
-					break;
-				default:
+				}
+				else {
 					std::cout << "\n\n" << shopChoice << " Is not an option, cant you read?\n\n";
-					break;
 				}
 			} while (leaveShop != true);
-			break;
+			////////continue;
+		}
 #pragma endregion
 #pragma region Rest
-		case 'R': //rest at inn restoring all hp
+		//case 'R': //rest at inn restoring all hp
+		else if (playerResponse == 'R'){
 			std::cout << "Would you like to sleep at the inn? (150 gold) y/n\n";
 			std::cin >> playerResponse;
 			playerResponse = toupper(playerResponse);
@@ -99,47 +161,56 @@ void Zones::starterTown(Player player) {
 				if (player.minusGold(150) == true) {
 					std::cout << "You sleep at the inn, fully restoring all hp!\n";
 					player.rest();
-					break;
+					////continue;
 				}
 				else {
 					std::cout << "Not enough gold!\n";
-					break;
+					////continue;
 				}
 			}
 			else {
-				break;
+				////continue;
 			}
+		}
 #pragma endregion
 #pragma region Character Stats
-		case 'C':
+		//case 'C':
+		else if (playerResponse == 'C'){
 			player.displayStats();
-			break;
+			////continue;
+		}
 #pragma endregion
 #pragma region Inventory
-		case 'I':
+		else if (playerResponse == 'I'){
 			player.displayInventory();
-			break;
+			////continue;
+		}
 #pragma endregion
 #pragma region Equip
-		case 'E':
+		//case 'E':
+		else if (playerResponse == 'E'){
 			std::cout << "Please enter the item you wish to equip.\n";
 			std::cin.ignore();
 			std::getline(std::cin, EquipChoice);
 			std::transform(EquipChoice.begin(), EquipChoice.end(), EquipChoice.begin(), ::toupper);
 			player.Equip(EquipChoice);
-			break;
+			////continue;
+		}
 #pragma endregion
 #pragma region Unequip
-		case 'U':
+		//case 'U':
+		else if (playerResponse == 'U') {
 			std::cout << "Please enter the item you wish to unequip.\n";
 			std::cin.ignore();
 			std::getline(std::cin, unEquipChoice);
 			std::transform(unEquipChoice.begin(), unEquipChoice.end(), unEquipChoice.begin(), ::toupper);
 			player.unEquip(unEquipChoice);
-			break;
+			////continue;
+		}
 #pragma endregion
 #pragma region Stat points
-		case 'P':
+		//case 'P':
+		else if (playerResponse == 'P') {
 			do {
 				std::cout << "\nDisplaying available attributes:\n";
 				player.displayStatPointPage();
@@ -153,13 +224,14 @@ void Zones::starterTown(Player player) {
 					statPointChoice = 0;
 				}
 			} while (statPointChoice != 0);
-			break;
-#pragma endregion
-		default:
-			std::cout << "Please enter a valid response!\n";
-			break;
+			////continue;
 		}
-	} while (playerResponse != 'A');
+#pragma endregion
+		else{
+			std::cout << "Please enter a valid response!\n";
+			////continue;
+		}
+	} while (playerResponse != '1');
 }
 
 void Zones::plains() {

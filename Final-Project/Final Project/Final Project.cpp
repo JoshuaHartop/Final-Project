@@ -6,11 +6,12 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Zones.h"
-int main() {
+#include <algorithm>
+    int main() {
 
 
 #pragma region variables
-    Enemy mob;
+    
     int choosemob;
     char response = 'z';
     Player player;
@@ -35,50 +36,7 @@ int main() {
 #pragma endregion
 
 #pragma region mobSpawns
-        choosemob = rand() % (2) + 1; // decides what mob to spawn at random
-        //name, hp, maxhp, level, strength
-        if (zone.getStage() < 5) {
-            if (choosemob == 1) {
-                mob.enemy("slime", 10, 10, 1, 1);
-            }
-            else if (choosemob == 2) {
-                mob.enemy("rat", 15, 15, 2, 1);
-            }
-        }
-        else if (zone.getStage() == 5) {
-            mob.enemy("Big rat", 50, 50, 5, 5);
-        }
-        else  if (zone.getStage() > 5) {
-            mob.enemy("slimey", 10, 10, 1, 1);
-        }
-        mob.spawnEnemy();
-#pragma endregion
 
-#pragma region fightCode
-        while (player.isAlive == true && mob.isAlive == true) {
-
-            std::cout << "Would you like to [f]ight? or [r]un\n";
-
-            std::cin >> response;
-            response = toupper(response); // negates caps/lowercase
-            if (response == 'F') {
-                mob.takeDamage(player.pDamage());
-                player.takeDamage(mob.mobStrength());
-                if (mob.isAlive == false) {
-                    zone.stageUp();
-                    mob.Die();
-                    player.addGold(mob.dropGold());
-                    player.addXP(mob.dropXP()); // gives the player xp from the mob
-                    player.onLevel(); // checked if the player can level
-                    player.addItem(mob.dropItem(mob)); // adds the dropped item to the players inventory
-                }
-            }
-            if (response == 's') {
-                player.displayStats();
-            }
-        };
-
-#pragma endregion
     } while (player.isAlive == true);
 }
 

@@ -14,6 +14,9 @@ public:
 	int getAgi();
 	int getHP();
 	int getMoney();
+	int getAmount();
+	void addAmount(int Amount);
+	void takeAmount(int Amount);
 private:
 	// stat modifiers
 	

@@ -49,3 +49,12 @@ int Item::getHP() {
 int Item::getMoney() {
 	return itemPrice;
 }
+int Item::getAmount() {
+	return itemQuantity;
+}
+void Item::addAmount(int Amount) {
+	itemQuantity += Amount;
+}
+void Item::takeAmount(int Amount) {
+	itemQuantity -= Amount;
+}
