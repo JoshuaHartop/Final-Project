@@ -113,7 +113,7 @@ void Player::buyItems(std::string buyChoice) {
 	auto it = std::find_if(mInventory.begin(), mInventory.end(), [&](Item& I) { return I.getName() == buyChoice; }); // iterator finding the item
 	int index = std::distance(mInventory.begin(), it); //Pointer to the position of "sellChoice"
 	if (it == mInventory.end()) {
-		std::cout << "\nYou can only sell things you own.\n";
+		std::cout << "\nYou can only buy things on the menu.\n";
 	}
 	else {
 		if (mInventory[index].getAmount() == 1 && getGold() >= mInventory[index].getMoney()) {

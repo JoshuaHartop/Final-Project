@@ -54,9 +54,9 @@ void Player::gameStart() {
     playerGold = 0;
     shopVisits = 0;
     //Merchant Starter Kit
-    Item woodenArmor("WOODEN ARMOR", "Uncommon", "Armor", 50, 1, 0, 0, 0, 50, 0);
-    Item steelArmor("STEEL ARMOR", "Epic", "Armor", 150, 1, 0, 0, 0, 215, 0);
-    Item godlyArmor("GODLY ARMOR", "LEGENDARY", "Armor", 1000, 1, 0, 0, 0, 475, 0);
+    Item woodenArmor("WOODEN ARMOR", "Uncommon", "Armor", 50, 1, 0, 50, 0, 0, 0);
+    Item steelArmor("STEEL ARMOR", "Epic", "Armor", 150, 1, 0, 215, 0, 0, 0);
+    Item godlyArmor("GODLY ARMOR", "LEGENDARY", "Armor", 1000, 1, 0, 475, 0, 0, 0);
     addItemM(woodenArmor);
     addItemM(steelArmor);
     addItemM(godlyArmor);
@@ -91,7 +91,7 @@ double Player::pDamage() {
         double damage = randDamage * statValue[2];
         return damage;
     }
-
+    pMaxHealth = 100 + (statValue[0] * 3);
 }
 
 void Player::takeDamage(double dmg) {
@@ -134,6 +134,7 @@ void Player::displayInventory() {
 
     
     std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    pMaxHealth = 100 + (statValue[0] * 3);
 }
 void Player::MdisplayInventory() {
     std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
@@ -143,9 +144,11 @@ void Player::MdisplayInventory() {
     }
 
     std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    pMaxHealth = 100 + (statValue[0] * 3);
 }
 void Player::displayStats() // displays users stats
 {
+    pMaxHealth = 100 + (statValue[0] * 3);
     std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
         << "Displaying stats for: " << pName << "\n\n"
         << "Level: " << pLevel << "\n"
