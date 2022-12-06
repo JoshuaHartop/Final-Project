@@ -42,7 +42,7 @@
 
 
 /*
-The game must have a short, creative story supporting the adventure.                                | NOT DONE - Ryan
+The game must have a short, creative story supporting the adventure.                                | DONE - Ryan
 The game must allow for character creation for the hero.                                            | DONE - Ryan/Josh
 The hero must include all traits from A2 plus: hit points, combat traits, experience, and level.    | DONE - Josh
 The hero must have an inventory and must start with basic adventuring gear.                         | DONE - Ryan/Josh
@@ -51,6 +51,6 @@ The game must have a combat system.                                             
 The player must earn rewards for victory in combat.                                                 | DONE - Josh
 The player must be able to visit a town or haven between challenges.                                | DONE - Ryan 
 The player must be able to recover hit points.                                                      | DONE - Josh
-The player must be able to interact with merchants in the town/haven.                               | NOT DONE - Ryan
+The player must be able to interact with merchants in the town/haven.                               | DONE - Ryan
 The game must have defined winning and losing conditions.                                           | HALF DONE - Josh/Ryan
 */

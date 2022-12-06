@@ -51,7 +51,7 @@ Item Enemy::dropItem(Enemy enemy) {
     Item bloodwoodBow("BLOODWOOD BOW", "LEGENDARY", "Weapon", 1000, 1, 0, 0, 0, 0, 100);
 	Item hellflameSword("HELLFLAME SWORD", "LEGENDARY", "Weapon", 1000, 1, 0, 100, 0, 0, 0);
 	Item kingsStaff("KINGS STAFF", "LEGENDARY", "Weapon", 1000, 1, 0, 0, 100, 0, 0);
-    Item crownOfLies("CROWN OF LIES", "MYTHIC", "Armor", 3500, 1, 150, 150, 150, 150, 150);
+    Item crownOfLies("CROWN OF LIES", "MYTHIC", "Armor", 3500, 1, 150, 1000, 250, 475, 630);
     //placeholder
     Item g("", "", "placeholder", 0, 0, 0, 0, 0, 0, 0);
     
@@ -62,7 +62,7 @@ Item Enemy::dropItem(Enemy enemy) {
     itemSelect = std::rand() % (3) + 1;
     
     //randomly select item based on level of mob
-    if (enemy.getLevel() < 100) {
+    if (enemy.getLevel() <= 4) {
         std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
         if (randomDrop >= -60 && randomDrop <= 855) {
             std::cout << "The " << enemyName << " Dropped a ";
@@ -72,7 +72,7 @@ Item Enemy::dropItem(Enemy enemy) {
             else if (itemSelect == 2) {
                 return birchBow;
             }
-            else if (itemSelect == 3) {
+            else if (itemSelect >= 3) {
                 return warpedStaff;
             }
             
@@ -81,7 +81,91 @@ Item Enemy::dropItem(Enemy enemy) {
             return g;
         }
     }
+    else if (enemy.getLevel() >= 5 && enemy.getLevel() <= 9) {
+        std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
+        if (randomDrop >= -60 && randomDrop <= 855) {
+            std::cout << "The " << enemyName << " Dropped a ";
+            if (itemSelect == 1) {
+                return g;
+            }
+            else if (itemSelect == 2) {
+                return g;
+            }
+            else if (itemSelect >= 3) {
+                return g;
+            }
 
+        }
+        else {
+            return g;
+        }
+    }
+    else if (enemy.getLevel() >= 10 && enemy.getLevel() <= 14) {
+        std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
+        if (randomDrop >= -60 && randomDrop <= 855) {
+            std::cout << "The " << enemyName << " Dropped a ";
+            if (itemSelect == 1) {
+                return tungstenSword;
+            }
+            else if (itemSelect == 2) {
+                return eucalyptusBow;
+            }
+            else if (itemSelect >= 3) {
+                return electricStaff;
+            }
+
+        }
+        else {
+            return g;
+        }
+    }
+    else if (enemy.getLevel() == 69) {
+        std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
+        if (randomDrop >= -60 && randomDrop <= 855) {
+            std::cout << "The " << enemyName << " Dropped a ";
+            if (itemSelect == 1) {
+                return bloodwoodBow;
+                return hellflameSword;
+                return kingsStaff;
+                return crownOfLies;
+            }
+            else if (itemSelect == 2) {
+                return bloodwoodBow;
+                return hellflameSword;
+                return kingsStaff;
+                return crownOfLies;
+            }
+            else if (itemSelect == 3) {
+                return bloodwoodBow;
+                return hellflameSword;
+                return kingsStaff;
+                return crownOfLies;
+            }
+
+        }
+        else {
+            return g;
+        }
+    }
+    else if (enemy.getLevel() >= 15 && enemy.getLevel() != 69) {
+        std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
+        if (randomDrop >= -60 && randomDrop <= 855) {
+            std::cout << "The " << enemyName << " Dropped a ";
+            if (itemSelect == 1) {
+                return tungstenSword;
+            }
+            else if (itemSelect == 2) {
+                return eucalyptusBow;
+            }
+            else if (itemSelect == 3) {
+                return electricStaff;
+            }
+
+        }
+        else {
+            return g;
+        }
+    }
 }
 
 int  Enemy::dropXP() {

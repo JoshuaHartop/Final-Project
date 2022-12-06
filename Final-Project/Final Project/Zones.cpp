@@ -57,8 +57,25 @@ void Zones::starterTown(Player player) {
 			else if (getStage() == 5) {
 				mob.enemy("Big rat", 50, 50, 5, 5);
 			}
-			else  if (getStage() > 5) {
-				mob.enemy("slimey", 10, 10, 1, 1);
+			else  if (getStage() > 5 && getStage() < 10) {
+				mob.enemy("slimey", 15, 15, 5, 2);
+			}
+			else if (getStage() == 10) {
+				mob.enemy("Big rat", 75, 75, 10, 10);
+			}
+			else  if (getStage() > 10 && getStage() <15) {
+				mob.enemy("slimey", 35, 35, 1, 5);
+			}
+			else if (getStage() == 15) {
+				//metal man initiation code
+			}
+			else  if (getStage() > 15) {
+				if (choosemob == 1) {
+					mob.enemy("Knight of the Monster Queen", 115, 115, 18, 20);
+				}
+				else if (choosemob == 2) {
+					mob.enemy("God Tier Rat", 100, 100, 15, 15);
+				}
 			}
 			mob.spawnEnemy();
 #pragma endregion
