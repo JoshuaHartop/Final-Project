@@ -42,7 +42,7 @@ public:
 
     //player class stuff
     std::string getClass();
-
+    std::string getRace();
     
     //inventory functions
     void Equip(std::string EquipChoice);

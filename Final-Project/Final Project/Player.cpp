@@ -167,6 +167,10 @@ std::string Player::getClass() {
     return pClass;
 }
 
+std::string Player::getRace() {
+    return pRace;
+}
+
 void Player::pCreateChar() {
     pRaceSet();
     pClassSet();

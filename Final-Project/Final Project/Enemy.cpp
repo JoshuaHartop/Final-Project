@@ -62,7 +62,7 @@ Item Enemy::dropItem(Enemy enemy) {
     itemSelect = std::rand() % (3) + 1;
     
     //randomly select item based on level of mob
-    if (enemy.getLevel() <= 4) {
+    if (enemy.getLevel() < 5) {
         std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
         if (randomDrop >= -60 && randomDrop <= 855) {
             std::cout << "The " << enemyName << " Dropped a ";
@@ -81,7 +81,7 @@ Item Enemy::dropItem(Enemy enemy) {
             return g;
         }
     }
-    else if (enemy.getLevel() >= 5 && enemy.getLevel() <= 9) {
+    else if (enemy.getLevel() > 4 && enemy.getLevel() < 10) {
         std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
         if (randomDrop >= -60 && randomDrop <= 855) {
             std::cout << "The " << enemyName << " Dropped a ";
@@ -100,7 +100,7 @@ Item Enemy::dropItem(Enemy enemy) {
             return g;
         }
     }
-    else if (enemy.getLevel() >= 10 && enemy.getLevel() <= 14) {
+    else if (enemy.getLevel() > 9 && enemy.getLevel() < 15) {
         std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
         if (randomDrop >= -60 && randomDrop <= 855) {
             std::cout << "The " << enemyName << " Dropped a ";
@@ -147,7 +147,7 @@ Item Enemy::dropItem(Enemy enemy) {
             return g;
         }
     }
-    else if (enemy.getLevel() >= 15 && enemy.getLevel() != 69) {
+    else if (enemy.getLevel() > 14 && enemy.getLevel() != 69) {
         std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
         if (randomDrop >= -60 && randomDrop <= 855) {
             std::cout << "The " << enemyName << " Dropped a ";

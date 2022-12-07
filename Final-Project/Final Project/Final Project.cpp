@@ -20,7 +20,6 @@
     bool finalBossKilled = false;
     srand(static_cast<unsigned int>(time(0)));
 #pragma endregion
-
     std::cout << "Hello traveller, what should I call you?\n";
     player.setName();
     std::cout << "Nice to meet you " << player.playerName() << "\n"
@@ -30,7 +29,14 @@
 #pragma endregion
     player.gameStart(); // initializes player stats // player is alive
     do {
-
+        std::cout << "As you walk through the forest on the way to your home, you see it, MONSTERS, the forest overflows with them.\n";
+        std::cout << "Some start to notice you and they form a wave to come and destroy you, a grotesque humanoid creature emerges from behind them and points at you.\n";
+        std::cout << "In a shrill shriek scream, it manages to form the words -Food is ready- the only thing you can think of is to run.\n";
+        std::cout << "You know that the Monster Kings attack are indiscriminate whether you are a " << player.getRace() << " or not you know your only chance is escape.\n";
+        std::cout << "You ran so long that when you stopped you collapsed, you knew it had been many hours, as the sun had already emerged by then.\n";
+        std::cout << "You know you still need to find safety, you see smoke rising from the east, that must mean a person is over there as all monsters hate light.\n";
+        std::cout << "You run towards it at full speed, not knowing the toll it takes on your body.\n";
+        std::cout << "Eventually, you make it to a town, and are greeted by a voice that sounds more familiar than person who owns it looks...\n\n";
 #pragma region startTown
         zone.starterTown(player);
 #pragma endregion

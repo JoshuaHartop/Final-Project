@@ -5,6 +5,7 @@
 #include <algorithm>
 #include "Enemy.h"
 #include "Item.h"
+#include "Bossfight_and_Ending.h"
 
 
 void Zones::stageUp() {
@@ -22,7 +23,9 @@ std::string Zones::locationDescribe() {
 void Zones::starterTown(Player player) {
 	// send the player back to town
 	Enemy mob;
+	BossFight boss;
 	int choosemob;
+	int runaway;
 	char response = 'z';
 	char playerResponse = '1';
 	char shopChoice;
@@ -35,7 +38,7 @@ void Zones::starterTown(Player player) {
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Entering Riverbrook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	std::cout << "Well, " << player.playerName() << ", I am Josephine, welcome to Riverbrook!\n";
 	do {
-		std::cout << "Would you like to [a]dventure out of town, [s]hop, [r]est at the inn, check your [c]haracter stats, add attribute [p]oints, [e]quip an item, [u]nequip an item, or look at your [i]nventory\n";
+		std::cout << "Would you like to [a]dventure out of town, [s]hop, [r]est at the inn, check your [c]haracter stats, add attribute [p]oints, [e]quip an item, [u]nequip an item, or look at your [i]nventory (or d to debug bossfight)\n";
 		std::cin >> playerResponse;
 		playerResponse = toupper(playerResponse);
 		//switch (playerResponse) {
@@ -44,7 +47,8 @@ void Zones::starterTown(Player player) {
 		if (playerResponse == 'A') {
 			location = "You venture out of the town.\n";
 			locationDescribe();
-			choosemob = rand() % (2) + 1; // decides what mob to spawn at random
+			choosemob = rand() % (2) + 1;
+			runaway = rand() % (4) + 1;// decides what mob to spawn at random
 			//name, hp, maxhp, level, strength
 			if (getStage() < 5) {
 				if (choosemob == 1) {
@@ -67,7 +71,7 @@ void Zones::starterTown(Player player) {
 				mob.enemy("slimey", 35, 35, 1, 5);
 			}
 			else if (getStage() == 15) {
-				//metal man initiation code
+				boss.StartTicTacToe(player);
 			}
 			else  if (getStage() > 15) {
 				if (choosemob == 1) {
@@ -97,6 +101,16 @@ void Zones::starterTown(Player player) {
 						player.addXP(mob.dropXP()); // gives the player xp from the mob
 						player.onLevel(); // checked if the player can level
 						player.addItem(mob.dropItem(mob)); // adds the dropped item to the players inventory
+					}
+				}
+				if (response == 'R') {
+					std::cout << "\nYou attempt to run\n\n";
+					if (runaway >= 1 && runaway < 4) {
+						std::cout << "You run away succesfully\n\n";
+						mob.isAlive == false;
+					}
+					else {
+						std::cout << "Your attempt failed\n\n";
 					}
 				}
 				if (response == 's') {
@@ -242,6 +256,10 @@ void Zones::starterTown(Player player) {
 				}
 			} while (statPointChoice != 0);
 			////continue;
+		}
+		else if (playerResponse == 'D') {
+			//debug code
+			boss.StartTicTacToe(player);
 		}
 #pragma endregion
 		else{

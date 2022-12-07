@@ -39,6 +39,12 @@
     <ClCompile Include="Item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bossfight_and_Ending.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bossfight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -54,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bossfight_and_Ending.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
