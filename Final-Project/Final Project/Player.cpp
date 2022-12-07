@@ -85,7 +85,7 @@ double Player::pDamage() {
     }
     else if (getClass() == "Archer") {
         double damage = randDamage * statValue[4];
-        return damage;
+       return damage;
     }
     else if (getClass() == "Mage") {
         double damage = randDamage * statValue[2];

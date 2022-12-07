@@ -19,4 +19,6 @@ public:
 	int computerMove(std::vector<char> board, char computer);
 	void announceWinner(char winner, char computer, char human, Player player);
 	void StartTicTacToe(Player player);
+	bool isLegal(int move, const std::vector<char>& board);
+	void StartBossFightScene(Player player);
 };

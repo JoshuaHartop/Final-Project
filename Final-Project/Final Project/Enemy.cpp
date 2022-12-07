@@ -49,9 +49,6 @@ Item Enemy::dropItem(Enemy enemy) {
 	Item electricStaff("ELECTRIC STAFF", "Epic", "Weapon", 150, 1, 0, 0, 45, 0, 0);
     //Boss Gear
     Item bloodwoodBow("BLOODWOOD BOW", "LEGENDARY", "Weapon", 1000, 1, 0, 0, 0, 0, 100);
-	Item hellflameSword("HELLFLAME SWORD", "LEGENDARY", "Weapon", 1000, 1, 0, 100, 0, 0, 0);
-	Item kingsStaff("KINGS STAFF", "LEGENDARY", "Weapon", 1000, 1, 0, 0, 100, 0, 0);
-    Item crownOfLies("CROWN OF LIES", "MYTHIC", "Armor", 3500, 1, 150, 1000, 250, 475, 630);
     //placeholder
     Item g("", "", "placeholder", 0, 0, 0, 0, 0, 0, 0);
     
@@ -119,27 +116,18 @@ Item Enemy::dropItem(Enemy enemy) {
             return g;
         }
     }
-    else if (enemy.getLevel() == 69) {
+    else if (enemy.getLevel() == 15) {
         std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
         if (randomDrop >= -60 && randomDrop <= 855) {
             std::cout << "The " << enemyName << " Dropped a ";
             if (itemSelect == 1) {
                 return bloodwoodBow;
-                return hellflameSword;
-                return kingsStaff;
-                return crownOfLies;
             }
             else if (itemSelect == 2) {
                 return bloodwoodBow;
-                return hellflameSword;
-                return kingsStaff;
-                return crownOfLies;
             }
             else if (itemSelect == 3) {
                 return bloodwoodBow;
-                return hellflameSword;
-                return kingsStaff;
-                return crownOfLies;
             }
 
         }
@@ -147,7 +135,7 @@ Item Enemy::dropItem(Enemy enemy) {
             return g;
         }
     }
-    else if (enemy.getLevel() > 14 && enemy.getLevel() != 69) {
+    else if (enemy.getLevel() > 14 && enemy.getLevel() != 15) {
         std::cout << randomDrop << " <- random drop " << itemSelect << " <- Item select\n";
         if (randomDrop >= -60 && randomDrop <= 855) {
             std::cout << "The " << enemyName << " Dropped a ";

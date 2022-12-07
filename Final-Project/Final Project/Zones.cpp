@@ -50,7 +50,7 @@ void Zones::starterTown(Player player) {
 			choosemob = rand() % (2) + 1;
 			runaway = rand() % (4) + 1;// decides what mob to spawn at random
 			//name, hp, maxhp, level, strength
-			if (getStage() < 5) {
+			if (getStage() < 5 && getStage() != 1) {
 				if (choosemob == 1) {
 					mob.enemy("slime", 10, 10, 1, 1);
 				}
@@ -68,17 +68,19 @@ void Zones::starterTown(Player player) {
 				mob.enemy("Big rat", 75, 75, 10, 10);
 			}
 			else  if (getStage() > 10 && getStage() <15) {
-				mob.enemy("slimey", 35, 35, 1, 5);
+				mob.enemy("slimey", 35, 35, 10, 5);
 			}
-			else if (getStage() == 15) {
+			else if (getStage() == 1) {
 				boss.StartTicTacToe(player);
+				stageUp();
+				mob.enemy("Knight carrying away the Queens Loot", 115, 115, 15, 1);
 			}
 			else  if (getStage() > 15) {
 				if (choosemob == 1) {
 					mob.enemy("Knight of the Monster Queen", 115, 115, 18, 20);
 				}
 				else if (choosemob == 2) {
-					mob.enemy("God Tier Rat", 100, 100, 15, 15);
+					mob.enemy("God Tier Rat", 100, 100, 16, 15);
 				}
 			}
 			mob.spawnEnemy();
@@ -101,6 +103,14 @@ void Zones::starterTown(Player player) {
 						player.addXP(mob.dropXP()); // gives the player xp from the mob
 						player.onLevel(); // checked if the player can level
 						player.addItem(mob.dropItem(mob)); // adds the dropped item to the players inventory
+						if (mob.getLevel() == 15) {
+							Item hellflameSword("HELLFLAME SWORD", "LEGENDARY", "Weapon", 1000, 1, 0, 100, 0, 0, 0);
+							Item queensStaff("QUEENS STAFF", "LEGENDARY", "Weapon", 1000, 1, 0, 0, 100, 0, 0);
+							Item crownOfLies("CROWN OF LIES", "MYTHIC", "Armor", 3500, 1, 150, 1000, 250, 475, 630);
+							player.addItem(hellflameSword);
+							player.addItem(queensStaff);
+							player.addItem(crownOfLies);
+						}
 					}
 				}
 				if (response == 'R') {
@@ -266,7 +276,7 @@ void Zones::starterTown(Player player) {
 			std::cout << "Please enter a valid response!\n";
 			////continue;
 		}
-	} while (playerResponse != '1');
+	} while (player.isAlive != false);
 }
 
 void Zones::plains() {

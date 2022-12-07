@@ -7,11 +7,10 @@
 #include "Enemy.h"
 #include "Zones.h"
 #include <algorithm>
-    int main() {
-
+int main() {
 
 #pragma region variables
-    
+
     int choosemob;
     char response = 'z';
     Player player;
@@ -20,15 +19,17 @@
     bool finalBossKilled = false;
     srand(static_cast<unsigned int>(time(0)));
 #pragma endregion
-    std::cout << "Hello traveller, what should I call you?\n";
-    player.setName();
-    std::cout << "Nice to meet you " << player.playerName() << "\n"
-        << "Welcome to Humongalongous\n";
-#pragma region Character Creator
-    player.pCreateChar();
-#pragma endregion
-    player.gameStart(); // initializes player stats // player is alive
     do {
+        std::cout.flush();
+        std::cerr << "Hello traveller, what should I call you?" << std::endl;
+        player.setName();
+        std::cout << "Nice to meet you " << player.playerName() << "\n"
+            << "Welcome to Humongalongous\n";
+#pragma region Character Creator
+        player.pCreateChar();
+#pragma endregion
+        player.gameStart(); // initializes player stats // player is alive
+
         std::cout << "As you walk through the forest on the way to your home, you see it, MONSTERS, the forest overflows with them.\n";
         std::cout << "Some start to notice you and they form a wave to come and destroy you, a grotesque humanoid creature emerges from behind them and points at you.\n";
         std::cout << "In a shrill shriek scream, it manages to form the words -Food is ready- the only thing you can think of is to run.\n";
@@ -40,13 +41,11 @@
 #pragma region startTown
         zone.starterTown(player);
 #pragma endregion
+        return 0;
+    } while (player.isAlive != false);
+#pragma region mobSpawn
 
-#pragma region mobSpawns
-
-    } while (player.isAlive == true);
 }
-
-
 /*
 The game must have a short, creative story supporting the adventure.                                | DONE - Ryan
 The game must allow for character creation for the hero.                                            | DONE - Ryan/Josh
