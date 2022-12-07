@@ -73,7 +73,7 @@ void Zones::starterTown(Player player) {
 			else if (getStage() == 15) {
 				boss.StartTicTacToe(player);
 				stageUp();
-				mob.enemy("Knight carrying away the Queens Loot", 115, 115, 15, 1);
+				mob.enemy("Knight carrying away the Queens Loot", 115, 115, 15, 15);
 			}
 			else  if (getStage() > 15) {
 				if (choosemob == 1) {
