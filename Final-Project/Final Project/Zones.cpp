@@ -38,7 +38,7 @@ void Zones::starterTown(Player player) {
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Entering Riverbrook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	std::cout << "Well, " << player.playerName() << ", I am Josephine, welcome to Riverbrook!\n";
 	do {
-		std::cout << "Would you like to [a]dventure out of town, [s]hop, [r]est at the inn, check your [c]haracter stats, add attribute [p]oints, [e]quip an item, [u]nequip an item, or look at your [i]nventory (or d to debug bossfight)\n";
+		std::cout << "Would you like to [a]dventure out of town, [s]hop, [r]est at the inn, check your [c]haracter stats, add attribute [p]oints, [e]quip an item, [u]nequip an item, or look at your [i]nventory\n";
 		std::cin >> playerResponse;
 		playerResponse = toupper(playerResponse);
 		//switch (playerResponse) {
@@ -70,7 +70,7 @@ void Zones::starterTown(Player player) {
 			else  if (getStage() > 10 && getStage() <15) {
 				mob.enemy("slimey", 35, 35, 10, 5);
 			}
-			else if (getStage() == 1) {
+			else if (getStage() == 15) {
 				boss.StartTicTacToe(player);
 				stageUp();
 				mob.enemy("Knight carrying away the Queens Loot", 115, 115, 15, 1);
@@ -266,10 +266,6 @@ void Zones::starterTown(Player player) {
 				}
 			} while (statPointChoice != 0);
 			////continue;
-		}
-		else if (playerResponse == 'D') {
-			//debug code
-			boss.StartTicTacToe(player);
 		}
 #pragma endregion
 		else{
