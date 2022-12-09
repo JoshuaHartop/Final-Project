@@ -17,7 +17,6 @@ Item::Item(std::string name, std::string rarity, std::string type, int price, in
 	agiModifier = agi;
 
 }
-
 std::string Item::displayItem() { // displays item
 	return (itemName + " " + itemRarity + " $" + 
 		std::to_string(itemPrice) + " x" + std::to_string(itemQuantity) + "\nSTR:" + std::to_string(strModifier) + " HP:" + std::to_string(hpModifier) + " INT:" +

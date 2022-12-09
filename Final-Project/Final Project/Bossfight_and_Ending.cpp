@@ -156,7 +156,6 @@ char BossFight::winner(const std::vector<char>& board) {
 			return board[WINNING_ROWS[row][0]];
 		}
 	}
-
 	// since nobody has won, check for a tie (no empty squares left)
 	if (count(board.begin(), board.end(), EMPTY) == 0)
 		return TIE;

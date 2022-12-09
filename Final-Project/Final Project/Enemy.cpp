@@ -129,7 +129,6 @@ Item Enemy::dropItem(Enemy enemy) {
             else if (itemSelect == 3) {
                 return bloodwoodBow;
             }
-
         }
         else {
             return g;
@@ -148,7 +147,6 @@ Item Enemy::dropItem(Enemy enemy) {
             else if (itemSelect == 3) {
                 return electricStaff;
             }
-
         }
         else {
             return g;

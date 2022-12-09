@@ -3,7 +3,6 @@
 #include <vector>
 #include <algorithm>
 #include "Player.h"
-
 class BossFight{
 public:
 	// function prototypes

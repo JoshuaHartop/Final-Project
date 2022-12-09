@@ -2,7 +2,6 @@
 #include <string>
 class Item {
 public:
-	
 	Item() {}
 	Item(std::string name, std::string rarity, std::string type, int price, int quantity, int str,int hp, int intel, int dex, int agi);
 	std::string displayItem();

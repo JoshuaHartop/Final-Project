@@ -7,7 +7,6 @@
 #include "Item.h"
 #include "Bossfight_and_Ending.h"
 
-
 void Zones::stageUp() {
 	stage += 1;
 }

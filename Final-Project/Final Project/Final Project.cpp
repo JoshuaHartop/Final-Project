@@ -8,7 +8,6 @@
 #include "Zones.h"
 #include <algorithm>
 int main() {
-
 #pragma region variables
 
     int choosemob;

@@ -14,9 +14,8 @@
 class Player {
 
 public:
-
     // public variables
-    bool isAlive = false; // checks if the player has died
+    bool isAlive = false; // checks if theplayer has died
     int shopVisits;
     ~Player() {}
     //public functions

@@ -71,6 +71,7 @@ void Player::unEquip(std::string unEquipChoice){
 			std::cout << "\nEquip your Armor, before you try to equip another\n";
 		}
 		//E2BIG
+
 		else{
 			if(Equipped[index].getType() == "Weapon"){
 				WeaponE = false;

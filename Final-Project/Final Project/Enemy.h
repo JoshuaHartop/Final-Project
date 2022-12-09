@@ -15,7 +15,6 @@ public:
     double mobStrength();
     Item dropItem(Enemy enemy);
     int getLevel();
-
 private:
     std::string enemyName;
     int xpGiven;

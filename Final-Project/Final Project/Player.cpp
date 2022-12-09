@@ -69,7 +69,6 @@ void Player::setName() { // sets the players name
 std::string Player::playerName() {
     return pName;
 }
-
 void Player::Die() {
     isAlive = false;
     std::cout << "You Died! Game over!\n";
