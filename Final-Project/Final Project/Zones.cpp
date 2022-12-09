@@ -50,7 +50,7 @@ void Zones::starterTown(Player player) {
 			choosemob = rand() % (2) + 1;
 			runaway = rand() % (4) + 1;// decides what mob to spawn at random
 			//name, hp, maxhp, level, strength
-			if (getStage() < 5 && getStage() != 1) {
+			if (getStage() < 5) {
 				if (choosemob == 1) {
 					mob.enemy("slime", 10, 10, 1, 1);
 				}
