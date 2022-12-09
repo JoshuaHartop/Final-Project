@@ -21,3 +21,4 @@ public:
 	bool isLegal(int move, const std::vector<char>& board);
 	void StartBossFightScene(Player player);
 };
+

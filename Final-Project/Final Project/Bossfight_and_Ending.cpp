@@ -281,7 +281,8 @@ void BossFight::StartBossFightScene(Player player) {
 	std::cout << "You black out from exhaustion, in a pool of your own blood after leveling their forces, awakening in a familiar inn, with a familiar face.\n";
 	std::cout << " -JOSEPHINE!- You scream as the dead stares you in the eyes. - Yes, and thank you for saving my town.\n";
 	std::cout << "It is so nice to finally meet you, I have been locked in my own house so long I barely remembered what the town looked like.-\n";
-	std::cout << "- Are they dead ? -you ask, with tears running down your face, as you finally take a break for the first time in 2 months.\n";
+	std::cout << "- Are they dead ? -you ask, with tears 
+		running down your face, as you finally take a break for the first time in 2 months.\n";
 	std::cout << "-Not all of them, the rest have retreated, but they will gang up to try and survive, we need someone brave enough to adventure into the forest.\n";
 	std::cout << "For the safety of our civilization, I ask of you to help us protect our people-You think, and you think, then you think some more.\n";
 	std::cout << "All you can think of to say is -I will defend Riverbrook and its People, with all my might-\n";

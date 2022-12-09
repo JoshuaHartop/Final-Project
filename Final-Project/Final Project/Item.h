@@ -17,6 +17,7 @@ public:
 	void addAmount(int Amount);
 	void takeAmount(int Amount);
 private:
+
 	// stat modifiers
 	
 	int hpModifier;

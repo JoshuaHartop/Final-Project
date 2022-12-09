@@ -22,6 +22,7 @@ int main() {
         std::cout.flush();
         std::cerr << "Hello traveller, what should I call you?" << std::endl;
         player.setName();
+
         std::cout << "Nice to meet you " << player.playerName() << "\n"
             << "Welcome to Humongalongous\n";
 #pragma region Character Creator
